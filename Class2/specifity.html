@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+        li {
+            color: red;
+        }
+        .child1 {
+            color: blue !important;
+        }
+
+        #ch2 {
+            color: magenta;
+        }
+
+        .parent .child2#ch2 {
+            color: aqua;
+        }
+
+        .parent #ch1 {
+            color: pink;
+        }
+
+        #ch1 {
+            color: green;
+        }
+
+        .btn1 {
+            color: green;
+        }
+
+        .btn { 
+            color: red;
+        }
+
+        button:hover {
+            color: blue;
+        }
+
+        #btnP {
+            color: aqua;
+        }
+
+        #btnP:hover {
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <ul class="parent">
+        <li class="child child1" id="ch1">1 </li>
+        <li class="child child2" id="ch2">2 </li>
+        <li class="child child3">3 </li>
+    </ul>
+    <button class="bt1 btn" id="btnP">Submit</button>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+            display: inline-block;
+        }
+        .box1 {
+            background-color: red;
+        }
+        .box2 {
+            background-color: blue;
+        }
+        .box3 {
+            background-color: green;
+        }
+        .box4 {
+            background-color: aqua;
+        }
+
+        .box {
+            position: relative;
+            top: 0;
+        }
+
+        button {
+            position: absolute;
+        }
+
+        .parent {
+            width: 100vw;
+            height: 200vh;
+            background: #ccc;
+        }
+
+        header {
+            width: 100vw;
+            height: 60px;
+            background-color: pink;
+            position: sticky;
+            top: 10px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <header>Link1</header>
+        <div class="box box3"></div>
+        <div class="box box4">
+            <button>Click Me!</button>
+        </div>
+    </div>
+</body>
+</html>
