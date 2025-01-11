@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./index.js"></script>
+    <style>
+        .randomNumberContainer {
+            border: 1px solid #ccc;
+            margin: 30px;
+            padding: 50px;
+            text-align: center;
+            color: green;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="heading">DOM</h1>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+    </ul>
+    <div class="container" id="mainContent"> 
+        <div class="parent">
+            <ul>
+                <li>Child 1</li>
+                <li>Child 2</li>
+            </ul>
+        </div>
+    </div>
+    <div class="parent">
+        <p>Some details here</p>
+        <a href="https://kodekarma.dev">Kode Karma</a>
+    </div>
+    <div class="randomNumberContainer"></div>
+    <!-- <button onclick="showRandomNumber()">Show Random Number</button> -->
+    <button class="randomButton">Show Random Number</button>
+    <script>
+        var title = 'Chirag Goel JS Class'
+        // alert(title);
+        // console.log(title);
+        // console.log(document.getElementsByClassName('parent')[0].innerHTML);
+
+        function showRandomNumber() {
+            const divRef = document.querySelector('.randomNumberContainer');
+            divRef.textContent = Math.floor(Math.random()*10);
+        }
+
+        const btnRef = document.querySelector('.randomButton');
+        btnRef.addEventListener('click', function(event) {
+            showRandomNumber();
+        })
+    </script>
+</body>
+</html>
+
+<!-- '.container .parent'
+
+'#mainContent .parent' -->

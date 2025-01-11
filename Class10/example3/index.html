@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <span class="var1">5</span>
+        <span class="operator">+</span>
+        <span class="var2">10</span>
+        <span>=</span>
+        <span class="result">--</span> <!-- result = 50 -->
+        
+    </div>
+
+    <button>Calculate</button>
+
+    <script>
+        const btnRef = document.querySelector('button');
+        const var1Ref = document.querySelector('.var1');
+        const var2Ref = document.querySelector('.var2');
+        const operatorRef = document.querySelector('.operator');
+        const resultRef = document.querySelector('.result');
+    
+        btnRef.addEventListener('click', function(event) {
+            const num1 = Number(var1Ref.textContent);
+            const num2 = Number(var2Ref.textContent);
+
+            switch(operatorRef.textContent) {
+                case '*': {
+                    resultRef.textContent = num1 * num2;
+                    break;
+                }
+                case '/': {
+                    resultRef.textContent = num1 / num2;
+                    break;
+                }
+                case '-': {
+                    resultRef.textContent = num1 - num2;
+                    break;
+                }
+                case '+': {
+                    resultRef.textContent = num1 + num2;
+                    break;
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+console.log('Linked external JS file')
