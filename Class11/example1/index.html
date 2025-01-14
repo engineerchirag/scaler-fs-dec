@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+        .heading, .filter, .movies {
+            display: flex;
+            justify-content: center;
+        }
+        .heading {
+            padding: 20px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .filter {
+            padding: 10px;
+        }
+        .movies {
+            padding: 15px;
+            gap: 15px;
+        }
+        .movie {
+            display: flex;
+            flex-direction: column;
+            width: 150px;
+        }
+        .movie-title {
+            background-color: black;
+            color: white;
+            padding: 5px;
+        }
+        .movie-price {
+            display: flex;
+            background-color: chocolate;
+            color: white;
+            height: 100px;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">BookMyShow</div>
+        <div class="filter">
+            <select>
+                <option>All</option>
+                <option>Action</option>
+                <option>Horror</option>
+                <option>Comedy</option>
+            </select>
+        </div>
+        <div class="movies">
+            <div class="movie" data-genre="Action">
+                <div class="movie-title">Action: Movie 1</div>
+                <div class="movie-price">Rs 100</div>
+            </div>
+            <div class="movie" data-genre="Comedy">
+                <div class="movie-title">Comedy: Movie 2</div>
+                <div class="movie-price">Rs 100</div>
+            </div>
+            <div class="movie" data-genre="Action">
+                <div class="movie-title">Action: Movie 3</div>
+                <div class="movie-price">Rs 100</div>
+            </div>
+            <div class="movie" data-genre="Action">
+                <div class="movie-title">Action: Movie 4</div>
+                <div class="movie-price">Rs 100</div>
+            </div>
+            <div class="movie" data-genre="Comedy">
+                <div class="movie-title">Comedy: Movie 5</div>
+                <div class="movie-price">Rs 100</div>
+            </div>
+            <div class="movie" data-genre="Horror">
+                <div class="movie-title">Horror: Movie 6</div>
+                <div class="movie-price">Rs 100</div>
+            </div>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>

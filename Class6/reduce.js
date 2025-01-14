@@ -7,7 +7,7 @@ const totalTransactionValue = (tnxs) => {
     // });
     // return acc;
 
-    tnxs.reduce((acc, item , i) => {
+    return tnxs.reduce((acc, item , i) => {
         acc += item;
         return acc;
     }, 0);
