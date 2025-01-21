@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .task-container {
+            background-color: #ccc;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .task {
+            width: 200px;
+            background-color: aquamarine;
+        }
+        .task-priority {
+            background-color: yellow;
+            height: 10px;
+            width: 100%;
+        }
+        .task-id {
+            background-color: black;
+            color: white;
+        }
+        .task-content, .task-id {
+            padding: 5px 10px;
+        }
+        .task-content {
+            height: 150px;
+        }
+
+        .header {
+            background-color: rgb(58, 58, 58);
+            display: flex;
+            height: 60px;
+            padding: 10px;
+        }
+        .header .actions {
+            color: white;
+            font-size: 35px;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            cursor: pointer;
+        }
+        .task-modal {
+            width: 50%;
+            height: 400px;
+            background-color: #939393;
+            display: flex;
+            border: 1px solid black;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .task-modal .left-section {
+            flex: 1;
+            display: flex;
+            position: relative;
+        }
+
+        .task-modal .left-section textarea {
+            background-color: white;
+            width: 100%;
+        }
+
+        .task-modal .right-section {
+            width: 100px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .task-modal .right-section .priority {
+            height: 100px;
+        }
+
+        .task-modal .left-section .close {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            color: white;
+            border-radius: 50%;
+            font-size: 14px;
+            left: -10px;
+            top: -10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .priority.p1 {
+            background-color: pink;
+        }
+        .priority.p2 {
+            background-color: rgb(149, 149, 244);
+        }
+        .priority.p3 {
+            background-color: cyan;
+        }
+        .priority.p4 {
+            background-color: rgb(220, 209, 6);
+        }
+
+        .priority.selected {
+            border: 3px solid white;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="filters"></div>
+        <div class="actions">
+            <div class="create-icon">+</div>
+        </div>
+    </div>
+
+     <!-- Create Task Modal -->
+      <div class="task-modal hide">
+        <div class="left-section">
+            <div class="close">X</div>
+            <textarea ></textarea>
+        </div>
+        <div class="right-section">
+            <div class="priority p1" data-priority="1"></div>
+            <div class="priority p2" data-priority="2"></div>
+            <div class="priority p3" data-priority="3"></div>
+            <div class="priority p4" data-priority="4"></div>
+        </div>
+      </div>
+
+     <!-- Task Container -->
+    <div class="task-container"></div>
+    <script src="./index.js"></script>
+</body>
+</html>
