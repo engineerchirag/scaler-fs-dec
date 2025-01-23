@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <style>
         .task-container {
             background-color: #ccc;
@@ -15,6 +16,7 @@
         .task {
             width: 200px;
             background-color: aquamarine;
+            position: relative;
         }
         .task-priority {
             background-color: yellow;
@@ -49,6 +51,7 @@
             cursor: pointer;
         }
         .task-modal {
+            z-index: 1;
             width: 50%;
             height: 400px;
             background-color: #939393;
@@ -117,12 +120,45 @@
         .hide {
             display: none;
         }
+
+        .task-delete-icon {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            cursor: pointer;
+        }
+
+        .noneditable .task-delete-icon {
+            display: none;
+        }
+
+        .header .filters{
+            background-color: black;
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+            margin: 0 50px;
+            align-items: center;
+        }
+        .header .filters .box{
+            width: 60px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+
     </style>
 </head>
 <body>
     <!-- Header -->
     <div class="header">
-        <div class="filters"></div>
+        <div class="filters">
+            <div class="box priority p1" data-priority="1"></div>
+            <div class="box priority p2" data-priority="2"></div>
+            <div class="box priority p3" data-priority="3"></div>
+            <div class="box priority p4" data-priority="4"></div>
+            <div class="box priority" data-priority="0"></div>
+        </div>
         <div class="actions">
             <div class="create-icon">+</div>
         </div>
