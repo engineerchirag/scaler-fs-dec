@@ -34,6 +34,12 @@
             height: 150px;
         }
 
+        .task-content textarea {
+            background: transparent;
+            border: none;
+            height: 100%;
+        }
+
         .header {
             background-color: rgb(58, 58, 58);
             display: flex;
@@ -43,13 +49,26 @@
         .header .actions {
             color: white;
             font-size: 35px;
-            background-color: black;
+            background-color: rgb(26, 26, 26);
+            display: flex;
+            cursor: pointer;
+        }
+
+        .header .actions .btn-icon{
+            width: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 50px;
-            cursor: pointer;
         }
+
+        .header .actions .btn-icon:hover {
+            background-color: rgb(0, 0, 0);
+        }
+
+        .header .actions .btn-icon.selected {
+            color: red;
+        }
+
         .task-modal {
             z-index: 1;
             width: 50%;
@@ -132,6 +151,10 @@
             display: none;
         }
 
+        .noneditable .task-content textarea{
+            pointer-events: none;
+        }
+
         .header .filters{
             background-color: black;
             padding: 10px;
@@ -160,7 +183,8 @@
             <div class="box priority" data-priority="0"></div>
         </div>
         <div class="actions">
-            <div class="create-icon">+</div>
+            <div class="create-icon btn-icon">+</div>
+            <div class="readonly-icon btn-icon">x</div>
         </div>
     </div>
 

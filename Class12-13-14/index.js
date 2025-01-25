@@ -58,11 +58,22 @@ const closeButtonRef = document.querySelector('.task-modal .close');
 const modalPriortiesRef = document.querySelectorAll('.right-section .priority');
 const textAreaRef = document.querySelector('.task-modal textarea');
 const priotiyFilterBoxesRef = document.querySelectorAll('.filters .box');
+const readOnlyBtnRef = document.querySelector('.header .actions .btn-icon.readonly-icon')
 
 function removeTask(id) {
     const indexToRemove = tasks.findIndex(task => task.id == id);
     if (indexToRemove !== -1) {
         tasks.splice(indexToRemove , 1);
+    }
+    updateLocalStorage();
+}
+
+function updateTask(id, newValue) {
+    const indexToRemove = tasks.findIndex(task => task.id == id);
+    if (indexToRemove !== -1) {
+        const currentTask = tasks[indexToRemove];
+        currentTask.content = newValue;
+        tasks.splice(indexToRemove , 1, currentTask);
     }
     updateLocalStorage();
 }
@@ -75,7 +86,7 @@ function createTask(id, priority, content) {
         <div class="task-priority priority p${priority}"></div>
         <div class="task-id">${id}</div>
         <div class="task-content">
-            ${content}
+            <textarea>${content}</textarea>
         </div>
         <div class="task-delete-icon"><i class="fa-solid fa-trash"></i></div>
     `;
@@ -87,6 +98,10 @@ function createTask(id, priority, content) {
         const taskRef = e.target.closest('.task');
         removeTask(taskRef.getAttribute('data-id'));
         renderList();
+    });
+    newTaskRef.querySelector('.task-content textarea').addEventListener('change', function(e) {
+        const newValue = e.target.value;
+        updateTask(id, newValue);
     });
     updateLocalStorage();
 }
@@ -141,7 +156,6 @@ function applyFilter(priority) {
     const allTasksRef = document.querySelectorAll('.task-container .task');
     allTasksRef.forEach(taskRef => {
         const taskPriority = taskRef.getAttribute('data-priority');
-        console.log(taskPriority);
         if (taskPriority === priority || priority === '0') {
             taskRef.classList.remove('hide');
         } else {
@@ -155,6 +169,17 @@ priotiyFilterBoxesRef.forEach(boxRef => {
         applyFilter(e.target.getAttribute('data-priority'));
     });
 });
+
+readOnlyBtnRef.addEventListener('click', function(e) {
+    const readOnlyBtnClassList = readOnlyBtnRef.classList;
+    if (readOnlyBtnClassList.contains('selected')) {
+        readOnlyBtnClassList.remove('selected');
+        taskContainerRef.classList.remove('noneditable');
+    } else {
+        readOnlyBtnClassList.add('selected');
+        taskContainerRef.classList.add('noneditable');
+    }
+})
 
 renderList();
 
