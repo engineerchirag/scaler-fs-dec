@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF - 8" />
+    <meta http - equiv="X - UA - Compatible" content="IE = edge" />
+    <meta name="viewport" content="width = device - width, initial - scale = 1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding-top: 5rem;
+        }
+
+
+        .blue {
+            background-color: blue;
+            box-shadow: 0px 0px 6px 5px;
+        }
+
+        .green {
+            background-color: green;
+            box-shadow: 0px 0px 6px 5px;
+        }
+
+        .red {
+            background-color: red;
+            box-shadow: 0px 0px 6px 5px;
+        }
+
+        .card {
+            border: 1px solid;
+            height: 10rem;
+            width: 10rem;
+            margin: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="width: 200px; height: 200px; border: 1px solid red;"></div>
+        <div class="card" data-color="blue"><span>Blue</span></div>
+        <div class="card" data-color="red"></div>
+        <div class="card" data-color="blue"></div>
+        <div class="card" data-color="red"></div>
+        <div class="card" data-color="red"></div>
+        <div class="card" data-color="blue"></div>
+        <div class="card" data-color="green"></div>
+        <div class="card" data-color="blue"></div>
+        <div class="card" data-color="green"></div>
+        <div class="card" data-color="blue"></div>
+        <div style="width: 200px; height: 200px; border: 1px solid red;"></div>
+    </div>
+    <script>
+        const containerRef = document.querySelector('.container');
+
+        containerRef.addEventListener('click', function(e){
+            console.log('target', e.target); // Element on click is triggered
+            console.log('currentTarget', e.currentTarget); // Element on which click is defined
+            if (e.target.classList.contains('card')) {
+                const ref = e.target;
+                const color = ref.getAttribute('data-color');
+                ref.style.backgroundColor = color;
+            }
+        })
+
+
+
+
+        // const cardsRef = document.querySelectorAll('.card');
+
+        // cardsRef.forEach(cardRef => {
+        //     cardRef.addEventListener('click', function(event) {
+        //         console.log(event.target);
+        //         const color = event.target.getAttribute('data-color');
+        //         console.log(color);
+        //         event.target.style.backgroundColor = color;
+        //     });
+        // })
+    </script>
+</body>
+
+</html>

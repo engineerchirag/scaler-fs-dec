@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container, .new {
+            display: flex;
+            flex-direction: column;
+        }
+        .comment {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            border: 1px solid #ccc;
+            gap: 5px;
+        }
+
+        .new, .comment {
+            margin-left: 50px;
+        }
+        .comment button {
+            width: 50px;
+        }
+
+        .new {
+            align-items: flex-end;
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- <div class="comment">
+            <div class="title">Hi, How are you doing?</div>
+            <button class="reply">Reply</button>
+            <div class="new">
+                <textarea placeholder="Enter your comment"></textarea>
+                <button class="send">Send</button>
+            </div>
+            <div class="comment">
+                <div class="title">Hi, How are you doing?</div>
+                <button class="reply">Reply</button>
+                <div class="new">
+                    <textarea placeholder="Enter your comment"></textarea>
+                    <button class="send">Send</button>
+                </div>
+                <div class="comment">
+                    <div class="title">Hi, How are you doing?</div>
+                    <button class="reply">Reply</button>
+                    <div class="new">
+                        <textarea placeholder="Enter your comment"></textarea>
+                        <button class="send">Send</button>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="title">Hi, How are you doing?</div>
+                    <button class="reply">Reply</button>
+                    <div class="new">
+                        <textarea placeholder="Enter your comment"></textarea>
+                        <button class="send">Send</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+         -->
+    </div>
+    <script>
+        const containerRef = document.querySelector('.container');
+
+        const comments = [{
+            id: 1,
+            title: '1. Hi, how are you doing?',
+            replies: [{
+                id: 2,
+                title: '2. Iam good',
+                replies: [{
+                    id: 4,
+                    title: '4. What is your insta handle.',
+                }, {
+                    id: 11,
+                    title: '11. What is your insta handle.',
+                }]
+            }, {
+                id: 3,
+                title: '3. Iam awesome',
+            }] 
+        },{
+            id: 5,
+            title: '5. Hi, how are you doing?',
+            replies: [{
+                id: 20,
+                title: '20. Iam good',
+                replies: [{
+                    id: 40,
+                    title: '40. What is your insta handle.',
+                }]
+            }]
+        }];
+
+        function addNewReply(commentList, parentId, newReplyId, newReplyTitle) {
+            commentList?.forEach(comment => {
+                if (comment.id == parentId) {
+                    // Add new reply in existing replies
+                    if (!comment.replies) {
+                        comment.replies = [];
+                    }
+                    comment.replies.unshift({ id: newReplyId, title: newReplyTitle});
+                    return;
+                }
+                addNewReply(comment.replies, parentId, newReplyId, newReplyTitle);
+            })
+        }
+
+        function createCommentCard (parentRef, id, title) {
+            const newCardRef = document.createElement('div');
+            newCardRef.className = 'comment';
+            newCardRef.id = id;
+            newCardRef.innerHTML = `
+                <div class="title">${title}</div>
+                <button class="reply">Reply</button>
+                <div class="new hide">
+                    <textarea placeholder="Enter your comment"></textarea>
+                    <button class="send">Send</button>
+                </div>
+            `;
+
+            parentRef.appendChild(newCardRef);
+            return newCardRef;
+        }
+
+        function render() {
+            containerRef.innerHTML = '';
+            comments.forEach(comment => {
+                const parentRef = createCommentCard(containerRef, comment.id, comment.title);
+                comment.replies?.forEach(parentReply => {
+                    const childRef = createCommentCard(parentRef, parentReply.id, parentReply.title);
+                    parentReply.replies?.forEach(childReply => {
+                        createCommentCard(childRef, childReply.id, childReply.title);
+                    });
+                });
+            });
+        }
+        
+        containerRef.addEventListener('click', function(e) {
+            if (e.target.classList.contains('reply')) {
+                const newRef = e.target.closest('.comment').querySelector('.new');
+                newRef.classList.remove('hide');
+            }
+
+            if (e.target.classList.contains('send')) {
+                const parentCommentRef = e.target.closest('.comment');
+                const textareaRef = parentCommentRef.querySelector('.new textarea');
+                const newTitle = textareaRef.value;
+                const parentId = parentCommentRef.id;
+                const newReplyId = Math.random();
+                addNewReply(comments, parentId, newReplyId, newTitle);
+                render();
+            }
+        })
+
+        render();
+    </script>
+</body>
+</html>
