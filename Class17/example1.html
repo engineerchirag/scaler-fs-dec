@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <input placeholder="Search Product"/>
+        <ul>
+            <li>Item1</li>
+        </ul>
+    </div>
+    <script>
+
+        function renderProducts(data) {
+            console.log(data);
+        }
+        function fetchProducts(e) {
+            const value = e.target.value;
+            console.log(value);
+            fetch(`https://fakestoreapi.com/products?query=${value}`)
+                .then(res=>res.json())
+                .then(data=>{
+                    renderProducts(data);
+                });
+        }
+
+        function debounce(fn, delay) {
+            let timerRef;
+            return function(e) {
+                clearTimeout(timerRef);
+                timerRef = setTimeout(() => fn(e), delay);
+            }
+        }
+
+        const debouncedProductCall = debounce(fetchProducts, 800);
+
+        const inputRef = document.querySelector('input');
+        inputRef.addEventListener('keyup', debouncedProductCall);
+
+    </script>
+</body>
+</html>

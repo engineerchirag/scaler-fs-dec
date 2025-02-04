@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Throttled Scroll Example</title>
+    <style>
+        body, html {
+            height: 3000px; /* Ensure there's enough space to scroll */
+        }
+        .status {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+        }
+    </style>
+    <script defer src="./script2.js"></script>
+</head>
+<body>
+    <div class="status">Scroll position: <span id="scrollPosition">0</span></div>
+</body>
+</html>
