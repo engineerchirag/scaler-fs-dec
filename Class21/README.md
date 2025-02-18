@@ -1,0 +1,7 @@
+- Call
+- apply
+- bind
+- polyfill
+- polyfill for call
+- polyfill for apply
+- polyfill for bind

@@ -1,41 +1,27 @@
-// Polyfill
+// Object literal
 
-Array.prototype.myMap = function(callback) {
-    // Implementation goes here
-    console.log(this); // arr
-};
+var obj = {};
 
-const arr = [1, 2, 3, 4, 5];
+// Function constructor
 
-arr.myMap();
-
-// Polyfill for myCall
-
-Function.prototype.myCall = function(context, ...args) {
-    console.log(this); // greet
-    context.fn = this;
-    context.fn(...args);
+function Person(name, age) {
+    this.name = name;
 }
 
-function greet(a,b) {}
+new Person('John', 30);
 
-greet.myCall({}, 1, 2);
+// Class
 
-Function.prototype.myApply = function(context, ...args) {
-    console.log(this); // greet
-    context.fn = this;
-    context.fn(args);
-}
-
-greet.myApply({}, [1, 2]);
-
-
-Function.prototype.myBind = function(context, ...args) {
-    // Return a new function
-    // return function executed with context
-    // Closure to remember the context
-    const selfFn = this;
-    return function() {
-        return selfFn.apply(context, args);
+class Car {
+    constructor(model, color) {
+        this.model = model;
+        this.color = color;
     }
 }
+
+new Car('Toyota', 'Red');
+
+// Object.create
+
+var obj = Object.create({a: 1});
+

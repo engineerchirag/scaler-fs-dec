@@ -1,7 +1,7 @@
-- Call
-- apply
-- bind
-- polyfill
-- polyfill for call
-- polyfill for apply
-- polyfill for bind
+Today's Topic
+
+- Prototype
+- Inheritance
+- proto property
+- Chaining
+- Object.create()
