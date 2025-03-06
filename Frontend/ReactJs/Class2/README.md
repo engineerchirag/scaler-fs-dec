@@ -8,3 +8,8 @@ Agenda:
     - Props
     - Conditional render
     - State
+
+
+Setup a new project:
+
+npm create vite@latest todo-list  -- --template react
