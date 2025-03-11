@@ -11,4 +11,11 @@ Agenda:
 - Watchlist
 - Detail page
 
+// Class 5
+
+- Fetch movies data
+- Render movies
+- Pagination
+- Movie Detail Page Components
+
 

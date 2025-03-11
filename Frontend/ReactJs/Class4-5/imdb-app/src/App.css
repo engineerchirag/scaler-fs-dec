@@ -60,3 +60,41 @@
 .header ul li {
   list-style: none;
 }
+
+.movie {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  width: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.movie-list {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.movie-list-page {
+  padding: 0px 30px;
+}
+
+.pagination {
+  display: flex;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+}
+
+.pagination button.active {
+  background-color: blueviolet;
+}
+
+.pagination-section {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0px;
+}
