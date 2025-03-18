@@ -18,4 +18,10 @@ Agenda:
 - Pagination
 - Movie Detail Page Components
 
+// Class 6
+
+- Add to WatchList 
+- Watchlist page
+- List all watchlist
+
 
