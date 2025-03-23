@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { WatchListContext } from "../assets/contexts/watchlistContext";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromWatchlist } from "../store/WatchListStore";
 
 let genreids = {
     28: "Action",
@@ -24,8 +26,8 @@ let genreids = {
 };
 
 const WatchListPage = () => {
-    const WatchListContextData = useContext(WatchListContext);
-    const {watchlist} = WatchListContextData;
+    const watchlist = useSelector((state) => state.watchList);
+    const dispatch = useDispatch();
 
     const [list, setList] = useState([]);
 
@@ -50,6 +52,10 @@ const WatchListPage = () => {
     const handleGenreSelection = (genreId) => {
         const newList = Object.values(watchlist).filter(movie => genreId ? movie.genre_ids.includes(genreId) : true);
         setList(newList);
+    }
+
+    const handleRemoveFromWatchList = (movieId) => {
+        dispatch(removeFromWatchlist(movieId));
     }
 
     useEffect(() => {
@@ -78,6 +84,7 @@ const WatchListPage = () => {
                             <td>Movie Title</td>
                             <td>Genres</td>
                             <td>Popularity <span onClick={() => handleSorting('DESC')}>^</span><span onClick={() => handleSorting('ASC')}>V</span></td>
+                            <td>Actions</td>
                         </tr>
                         {
                             list.map(movie => (
@@ -87,6 +94,7 @@ const WatchListPage = () => {
                                     <td>{movie.title}</td>
                                     <td>{movie.genre_ids.map(genreId => genreids[genreId]).join(', ')}</td>
                                     <td>{movie.popularity}</td>
+                                    <td><button onClick={() => handleRemoveFromWatchList(movie.id)}>-</button></td>
                                 </tr>
                             ))
                         }

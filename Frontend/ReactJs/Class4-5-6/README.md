@@ -23,5 +23,6 @@ Agenda:
 - Add to WatchList 
 - Watchlist page
 - List all watchlist
+- Sorting, Searching, Filter
 
 

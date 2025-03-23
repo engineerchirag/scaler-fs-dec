@@ -7,21 +7,21 @@ import Header from './components/Header'
 import MovieListPage from './pages/MovieListPage'
 import MoveDetailPage from './pages/MovieDetailPage'
 import WatchListPage from './pages/WatchListPage'
-import WatchListProvider from './assets/contexts/watchlistContext'
+// import WatchListProvider from './assets/contexts/watchlistContext'
 
 function App() {
   return (
     <BrowserRouter>
         <StrictMode>
           <Header />
-          <WatchListProvider>
+          {/* <WatchListProvider> */}
             <Routes>
               <Route path="/" element={<MovieListPage />} />
               <Route path="/details" element={<MoveDetailPage />} />
               <Route path="/watchlist" element={<WatchListPage  />} />
               <Route path="*" element={ <h2> Page not found!</h2>} />
             </Routes>
-          </WatchListProvider>
+          {/* </WatchListProvider> */}
         </StrictMode>
   </BrowserRouter>
   )
