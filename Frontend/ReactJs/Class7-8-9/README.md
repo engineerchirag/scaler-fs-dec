@@ -28,3 +28,14 @@ Class 8:
 Agenda:
 - Recap of Redux
 - Move IMDB app to redux
+
+
+Class 9:
+
+- Doubt Redux & React
+- Redux Principles
+- Async Redux
+- React & Redux DevTools
+- LocalStorage
+
+
